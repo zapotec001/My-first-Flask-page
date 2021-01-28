@@ -4,14 +4,86 @@
 <center><title>Ana Sayfa</title></center>
 <center><h1>Hoşgeldiniz</h1></center>
 <center><h2>Toplama işlemi</h2></center>
+<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+<style>
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #f4511e;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    
+    .button:hover span {
+      padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+    body {
+    font-family: 'Bangers';font-size: 22px;
+}
+</style>
+
+
+
+
 </head>
 <center>
-<body bgcolor="#b8b8ff">
+<body bgcolor="#1596b3">
     <form action="/toplam"method="post">
         <input type="number" name="number1"><br>
         <input type="number" name="number2"><br>
-        <button type="submit" >Gönder</button>
+        <button class="button" type="submit" style="vertical-align:middle"><span>Gönder</span></button>
     </form>
+<br>
+<br>
+<h2><span id="jsTarih"></span>         
+            <span id="jsZaman"></span>
+            <script>
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+                if(dd < 10) {
+                  dd='0'+dd
+                }
+                if(mm<10) {
+                  mm='0'+mm
+                }
+                today = dd + '.' + mm + '.' + yyyy;
+                document.getElementById("jsTarih").innerHTML = today;
+                var myVar=setInterval(function(){myTimer()},1000);
+                function myTimer() {
+                    var d = new Date();
+                    document.getElementById("jsZaman").innerHTML = d.toLocaleTimeString();
+                }
+            </script></h2>
 </body>
 </center>
 </html>
